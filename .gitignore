@@ -1,2 +1,5 @@
+.jshintrc
+.tern-project
+.project
 node_modules
 build
