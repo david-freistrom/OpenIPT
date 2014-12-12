@@ -1,5 +1,5 @@
 {
-  "name": "OpenIPT",
+  "name": "open-ipt",
   "version": "0.0.1",
   "description": "IP-T (Draft E-DIN 43863-4) Implementation",
   "main": "index.js",
