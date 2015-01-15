@@ -3,6 +3,10 @@ var IptCommand = require('./lib/IptCommand');
 var IptHeader = require('./lib/IptHeader');
 var IptBuffer = require('./lib/IptBuffer');
 
+var PushTargetNameReq = require('./lib/PushTargetNameReq');
+var PushTargetNameListFilter = require('./lib/PushTargetNameListFilter');
+var PushTargetNameList = require('.lib/PushTargetNameList');
+var PushTargetNameListEntry = require('./lib/PushTargetNameListEntry');
 
 var MsgConnectionOpenRequest = require('./lib/MsgConnectionOpenRequest');
 var MsgConnectionOpenResponse = require('./lib/MsgConnectionOpenResponse');
