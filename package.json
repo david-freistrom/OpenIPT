@@ -4,7 +4,8 @@
   "description": "IP-T (Draft E-DIN 43863-4) Implementation",
   "main": "index.js",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt mochaTest",
+    "build": "grund uglify"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "~0.5.0",
+    "grunt-mocha-test": "^0.12.6",
     "mocha": "^2.0.1"
   }
 }

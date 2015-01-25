@@ -2,82 +2,83 @@ var Constants = require('./lib/Constants');
 var IptCommand = require('./lib/IptCommand');
 var IptHeader = require('./lib/IptHeader');
 var IptBuffer = require('./lib/IptBuffer');
+var IptMessage = require('./lib/IptMessage');
 
-var PushTargetNameReq = require('./lib/PushTargetNameReq');
-var PushTargetNameListFilter = require('./lib/PushTargetNameListFilter');
-var PushTargetNameList = require('.lib/PushTargetNameList');
-var PushTargetNameListEntry = require('./lib/PushTargetNameListEntry');
+var PushTargetNameReq = require('./lib/messages/PushTargetNameReq');
+var PushTargetNameListFilter = require('./lib/messages/PushTargetNameListFilter');
+var PushTargetNameList = require('./lib/messages/PushTargetNameList');
+var PushTargetNameListEntry = require('./lib/messages/PushTargetNameListEntry');
 
-var MsgConnectionOpenRequest = require('./lib/MsgConnectionOpenRequest');
-var MsgConnectionOpenResponse = require('./lib/MsgConnectionOpenResponse');
+var MsgConnectionOpenRequest = require('./lib/messages/MsgConnectionOpenRequest');
+var MsgConnectionOpenResponse = require('./lib/messages/MsgConnectionOpenResponse');
 
-var MsgDataTransferRequest = require('./lib/MsgDataTransferRequest');
-var MsgDataTransferResponse = require('./lib/MsgDataTransferResponse');
+var MsgDataTransferRequest = require('./lib/messages/MsgDataTransferRequest');
+var MsgDataTransferResponse = require('./lib/messages/MsgDataTransferResponse');
 
-var MsgMaintenanceRequest = require('./lib/MsgMaintenanceRequest');
-var MsgMaintenanceResponse = require('./lib/MsgMaintenanceResponse');
+var MsgMaintenanceRequest = require('./lib/messages/MsgMaintenanceRequest');
+var MsgMaintenanceResponse = require('./lib/messages/MsgMaintenanceResponse');
 
-var MsgMultiPublicLoginRequest = require('./lib/MsgMultiPublicLoginRequest');
-var MsgMultiPublicLoginResponse = require('./lib/MsgMultiPublicLoginResponse');
+var MsgMultiPublicLoginRequest = require('./lib/messages/MsgMultiPublicLoginRequest');
+var MsgMultiPublicLoginResponse = require('./lib/messages/MsgMultiPublicLoginResponse');
 
-var MsgMultiScrambledLoginRequest = require('/lib/MsgMultiScrambledLoginRequest');
-var MsgMultiScrambledLoginResponse = require('/lib/MsgMultiScrambledLoginResponse');
+var MsgMultiScrambledLoginRequest = require('./lib/messages/MsgMultiScrambledLoginRequest');
+var MsgMultiScrambledLoginResponse = require('./lib/messages/MsgMultiScrambledLoginResponse');
 
-var MsgConnectionCloseResponse = require('./lib/MsgConnectionCloseResponse');
-var MsgDeviceAuthenticationResponse = require('./lib/MsgDeviceAuthenticationResponse');
-var MsgDeviceIdentifierResponse = require('./lib/MsgDeviceIdentifierResponse');
-var MsgDeviceSoftwareResponse = require('./lib/MsgDeviceSoftwareResponse');
-var MsgDeviceTimeResponse = require('./lib/MsgDeviceTimeResponse');
-var MsgIPStatisticResponse = require('./lib/MsgIPStatisticResponse');
-var MsgLogoutResponse = require('./lib/MsgLogoutResponse');
-var MsgNetworkStatusResponse = require('./lib/MsgNetworkStatusResponse');
-var MsgProtocolVersionResponse = require('./lib/MsgProtocolVersionResponse');
+var MsgConnectionCloseResponse = require('./lib/messages/MsgConnectionCloseResponse');
+var MsgDeviceAuthenticationResponse = require('./lib/messages/MsgDeviceAuthenticationResponse');
+var MsgDeviceIdentifierResponse = require('./lib/messages/MsgDeviceIdentifierResponse');
+var MsgDeviceSoftwareResponse = require('./lib/messages/MsgDeviceSoftwareResponse');
+var MsgDeviceTimeResponse = require('./lib/messages/MsgDeviceTimeResponse');
+var MsgIPStatisticResponse = require('./lib/messages/MsgIPStatisticResponse');
+var MsgLogoutResponse = require('./lib/messages/MsgLogoutResponse');
+var MsgNetworkStatusResponse = require('./lib/messages/MsgNetworkStatusResponse');
+var MsgProtocolVersionResponse = require('./lib/messages/MsgProtocolVersionResponse');
 
-var MsgPublicLoginRequest = require('./lib/MsgPublicLoginRequest');
-var MsgPublicLoginResponse = require('./lib/MsgPublicLoginResponse');
+var MsgPublicLoginRequest = require('./lib/messages/MsgPublicLoginRequest');
+var MsgPublicLoginResponse = require('./lib/messages/MsgPublicLoginResponse');
 
-var MsgPushChannelCloseRequest = require('./lib/MsgPushChannelCloseRequest');
-var MsgPushChannelCloseResponse = require('./lib/MsgPushChannelCloseResponse');
+var MsgPushChannelCloseRequest = require('./lib/messages/MsgPushChannelCloseRequest');
+var MsgPushChannelCloseResponse = require('./lib/messages/MsgPushChannelCloseResponse');
 
-var MsgPushChannelOpenRequest = require('./lib/MsgPushChannelOpenRequest');
-var MsgPushChannelOpenResponse = require('./lib/MsgPushChannelOpenResponse');
+var MsgPushChannelOpenRequest = require('./lib/messages/MsgPushChannelOpenRequest');
+var MsgPushChannelOpenResponse = require('./lib/messages/MsgPushChannelOpenResponse');
 
-var MsgPushDataTransferRequest = require('./lib/MsgPushDataTransferRequest');
-var MsgPushDataTransferResponse = require('./lib/MsgPushDataTransferResponse');
+var MsgPushDataTransferRequest = require('./lib/messages/MsgPushDataTransferRequest');
+var MsgPushDataTransferResponse = require('./lib/messages/MsgPushDataTransferResponse');
 
-var MsgPushTargetDeregisterRequest = require('./lib/MsgPushTargetDeregisterRequest');
-var MsgPushTargetDeregisterResponse = require('./lib/MsgPushTargetDeregisterResponse');
+var MsgPushTargetDeregisterRequest = require('./lib/messages/MsgPushTargetDeregisterRequest');
+var MsgPushTargetDeregisterResponse = require('./lib/messages/MsgPushTargetDeregisterResponse');
 
-var MsgPushTargetNamelistRequest = require('./lib/MsgPushTargetNamelistRequest');
-var MsgPushTargetNamelistResponse = require('./lib/MsgPushTargetNamelistResponse');
+var MsgPushTargetNamelistRequest = require('./lib/messages/MsgPushTargetNamelistRequest');
+var MsgPushTargetNamelistResponse = require('./lib/messages/MsgPushTargetNamelistResponse');
 
-var MsgPushTargetRegisterRequest = require('./lib/MsgPushTargetRegisterRequest');
-var MsgPushTargetRegisterResponse = require('./lib/MsgPushTargetRegisterResponse');
+var MsgPushTargetRegisterRequest = require('./lib/messages/MsgPushTargetRegisterRequest');
+var MsgPushTargetRegisterResponse = require('./lib/messages/MsgPushTargetRegisterResponse');
 
-var MsgScrambleLoginRequest = require('./lib/MsgScrambleLoginRequest');
-var MsgScrambleLoginResponse = require('./lib/MsgScrambleLoginResponse');
+var MsgScrambleLoginRequest = require('./lib/messages/MsgScrambleLoginRequest');
+var MsgScrambleLoginResponse = require('./lib/messages/MsgScrambleLoginResponse');
 
-var MsgServerModeReconnectRequest = require('./lib/MsgServerModeReconnectRequest');
-var MsgServerModeReconnectResponse = require('./lib/MsgServerModeReconnectResponse');
+var MsgServerModeReconnectRequest = require('./lib/messages/MsgServerModeReconnectRequest');
+var MsgServerModeReconnectResponse = require('./lib/messages/MsgServerModeReconnectResponse');
 
-var MsgServerModeRequest = require('./lib/MsgServerModeRequest');
-var MsgServerModeResponse = require('./lib/MsgServerModeResponse');
+var MsgServerModeRequest = require('./lib/messages/MsgServerModeRequest');
+var MsgServerModeResponse = require('./lib/messages/MsgServerModeResponse');
 
-var MsgStreamChannelCloseRequest = require('./lib/MsgStreamChannelCloseRequest');
-var MsgStreamChannelCloseResponse = require('./lib/MsgStreamChannelCloseResponse');
+var MsgStreamChannelCloseRequest = require('./lib/messages/MsgStreamChannelCloseRequest');
+var MsgStreamChannelCloseResponse = require('./lib/messages/MsgStreamChannelCloseResponse');
 
-var MsgStreamChannelOpenRequest = require('./lib/MsgStreamChannelOpenRequest');
-var MsgStreamChannelOpenResponse = require('./lib/MsgStreamChannelOpenResponse');
+var MsgStreamChannelOpenRequest = require('./lib/messages/MsgStreamChannelOpenRequest');
+var MsgStreamChannelOpenResponse = require('./lib/messages/MsgStreamChannelOpenResponse');
 
-var MsgStreamDataTransferRequest = require('./lib/MsgStreamDataTransferRequest');
-var MsgStreamDataTransferResponse = require('./lib/MsgStreamDataTransferResponse');
+var MsgStreamDataTransferRequest = require('./lib/messages/MsgStreamDataTransferRequest');
+var MsgStreamDataTransferResponse = require('./lib/messages/MsgStreamDataTransferResponse');
 
-var MsgStreamSourceDeregisterRequest = require('./lib/MsgStreamSourceDeregisterRequest');
-var MsgStreamSourceDeregisterResponse = require('./lib/MsgStreamSourceDeregisterResponse');
+var MsgStreamSourceDeregisterRequest = require('./lib/messages/MsgStreamSourceDeregisterRequest');
+var MsgStreamSourceDeregisterResponse = require('./lib/messages/MsgStreamSourceDeregisterResponse');
 
-var MsgStreamSourceRegisterRequest = require('.lib/MsgStreamSourceRegisterRequest');
-var MsgStreamSourceRegisterResponse = require('.lib/MsgStreamSourceRegisterResponse');
+var MsgStreamSourceRegisterRequest = require('./lib/messages/MsgStreamSourceRegisterRequest');
+var MsgStreamSourceRegisterResponse = require('./lib/messages/MsgStreamSourceRegisterResponse');
 
 
-var MsgUnknownCommandResponse = require('./lib/MsgUnknownCommandResponse');
+var MsgUnknownCommandResponse = require('./lib/messages/MsgUnknownCommandResponse');
 
