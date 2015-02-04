@@ -4,8 +4,8 @@
   "description": "IP-T (Draft E-DIN 43863-4) Implementation",
   "main": "index.js",
   "scripts": {
-    "test": "grunt mochaTest",
-    "build": "grund uglify"
+    "test": "grunt test",
+    "build": "grunt uglify"
   },
   "repository": {
     "type": "git",
@@ -23,11 +23,13 @@
   "homepage": "https://github.com/dspautz/OpenIPT",
   "devDependencies": {
     "chai": "^1.10.0",
+    "chai-change": "^1.0.0",
     "grunt": "^0.4.5",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-mocha-test": "^0.12.6",
-    "mocha": "^2.0.1"
+    "mocha": "^2.0.1",
+    "validator": "^3.28.0"
   }
 }

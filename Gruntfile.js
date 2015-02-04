@@ -3,6 +3,8 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    
+    //Configure a uglify task
     uglify: {
       options: {
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -18,7 +20,7 @@ module.exports = function(grunt) {
       test: {
         options: {
     	  reporter: 'spec',
-          captureFile: 'results.txt', // Optionally capture the reporter output to a file
+          captureFile: './test/results.txt', // Optionally capture the reporter output to a file
           quiet: false, // Optionally suppress output to standard out (defaults to false)
           clearRequireCache: false // Optionally clear the require cache before running tests (defaults to false)
         },
@@ -35,6 +37,7 @@ module.exports = function(grunt) {
 
   // Default task(s).
   grunt.registerTask('default', ['uglify']);
-  grunt.registerTask('default', ['mochaTest']);
+  grunt.registerTask('build', ['uglify']);
+  grunt.registerTask('test', ['mochaTest']);
 
 };

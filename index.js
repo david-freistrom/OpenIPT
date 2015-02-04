@@ -4,10 +4,10 @@ var IptHeader = require('./lib/IptHeader');
 var IptBuffer = require('./lib/IptBuffer');
 var IptMessage = require('./lib/IptMessage');
 
-var PushTargetNameReq = require('./lib/messages/PushTargetNameReq');
-var PushTargetNameListFilter = require('./lib/messages/PushTargetNameListFilter');
-var PushTargetNameList = require('./lib/messages/PushTargetNameList');
-var PushTargetNameListEntry = require('./lib/messages/PushTargetNameListEntry');
+var PushTargetNameReq = require('./lib/messages/helper/PushTargetNameReq');
+var PushTargetNameListFilter = require('./lib/messages/helper/PushTargetNameListFilter');
+var PushTargetNameList = require('./lib/messages/helper/PushTargetNameList');
+var PushTargetNameListEntry = require('./lib/messages/helper/PushTargetNameListEntry');
 
 var MsgConnectionOpenRequest = require('./lib/messages/MsgConnectionOpenRequest');
 var MsgConnectionOpenResponse = require('./lib/messages/MsgConnectionOpenResponse');
@@ -55,8 +55,8 @@ var MsgPushTargetNamelistResponse = require('./lib/messages/MsgPushTargetNamelis
 var MsgPushTargetRegisterRequest = require('./lib/messages/MsgPushTargetRegisterRequest');
 var MsgPushTargetRegisterResponse = require('./lib/messages/MsgPushTargetRegisterResponse');
 
-var MsgScrambleLoginRequest = require('./lib/messages/MsgScrambleLoginRequest');
-var MsgScrambleLoginResponse = require('./lib/messages/MsgScrambleLoginResponse');
+var MsgScrambleLoginRequest = require('./lib/messages/MsgScrambledLoginRequest');
+var MsgScrambleLoginResponse = require('./lib/messages/MsgScrambledLoginResponse');
 
 var MsgServerModeReconnectRequest = require('./lib/messages/MsgServerModeReconnectRequest');
 var MsgServerModeReconnectResponse = require('./lib/messages/MsgServerModeReconnectResponse');

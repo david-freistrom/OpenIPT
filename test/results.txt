@@ -1,0 +1,34 @@
+
+[0m[0m
+[0m  MsgDeviceTimeResponse[0m
+[0m    getTime() / setTime()[0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable time for a valid time value [0m
+[2K[0G    [32m  ✓[0m[90m should throw out of range error for time > 32 bit integer [0m
+[2K[0G    [32m  ✓[0m[90m should throw not an integer error for time as a string [0m
+[2K[0G    [32m  ✓[0m[90m should throw not an positive integer error for time < 0 [0m
+[0m    getSize()[0m
+[2K[0G    [32m  ✓[0m[90m should return 4 [0m
+[0m    write()[0m
+Time: 1
+[2K[0G    [32m  ✓[0m[90m should write UInt32 value 0x00000001 to buffer in Little-Endian [0m
+[0m    parse()[0m
+[2K[0G    [32m  ✓[0m[90m should return a MsgDeviceTimeResponse [0m
+
+[0m  MsgConnectionCloseResponse[0m
+[0m    getResponse() / setResponse()[0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable response for a valid response value [0m
+[2K[0G    [32m  ✓[0m[90m should throw out of range error for response > 8 bit integer [0m
+[2K[0G    [32m  ✓[0m[90m should throw not an integer error for response as a string [0m
+[2K[0G    [32m  ✓[0m[90m should throw not an positive integer error for response < 0 [0m
+[2K[0G    [32m  ✓[0m[90m should throw value not defined error for 0x01 > response > 0x03 [0m
+[0m    getSize()[0m
+[2K[0G    [32m  ✓[0m[90m should return 1 [0m
+[0m    write()[0m
+Response: 1
+[2K[0G    [32m  ✓[0m[90m should write UInt8 value 0x01 to buffer [0m
+[0m    parse()[0m
+[2K[0G    [32m  ✓[0m[90m should return a MsgConnectionCloseResponse [0m
+
+
+[92m [0m[32m 15 passing[0m[90m (9ms)[0m
+
