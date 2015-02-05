@@ -29,6 +29,27 @@ Response: 1
 [0m    parse()[0m
 [2K[0G    [32m  ✓[0m[90m should return a MsgConnectionCloseResponse [0m
 
+[0m  MsgConnectionOpenRequest[0m
+[0m    getTargetAddress() / setTargetAddress()[0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable targetAddress for a valid value IP [0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable targetAddress for a valid value IP:PORT [0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable targetAddress for a valid value ans sub address IP:PORT!IP:PORT [0m
+[2K[0G    [32m  ✓[0m[90m should raise a invalid format exception for an invalid IP [0m
+[2K[0G    [32m  ✓[0m[90m should raise a invalid format exception for an integer [0m
+[0m    getSourceAddress() / setSourceAddress()[0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable sourceAddress for a valid value IP [0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable sourceAddress for a valid value IP:PORT [0m
+[2K[0G    [32m  ✓[0m[90m should set and get instance variable sourceAddress for a valid value ans sub address IP:PORT!IP:PORT [0m
+[2K[0G    [32m  ✓[0m[90m should raise a invalid format exception for an invalid IP [0m
+[2K[0G    [32m  ✓[0m[90m should raise a invalid format exception for an integer [0m
+[0m    getSize()[0m
+    [36m  - should return 1[0m
+[0m    write()[0m
+    [36m  - should write UInt8 value 0x01 to buffer[0m
+[0m    parse()[0m
+    [36m  - should return a MsgConnectionOpenRequest[0m
 
-[92m [0m[32m 15 passing[0m[90m (9ms)[0m
+
+[92m [0m[32m 25 passing[0m[90m (19ms)[0m
+[36m [0m[36m 3 pending[0m
 

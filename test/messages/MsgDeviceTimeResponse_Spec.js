@@ -33,11 +33,11 @@ describe("MsgDeviceTimeResponse", function() {
 		});
 		  
 		it("should throw out of range error for time > 32 bit integer", function(){	    	   
-			expect(function(){msgDeviceTimeResponse.setTime(34647567345436456)}).to.throw(Error, 'Time is out of range!');
+			expect(function(){msgDeviceTimeResponse.setTime(34647567345436456)}).to.throw(Error, 'Time out of range!');
 		});
 		  
 		it("should throw not an integer error for time as a string", function(){	    	   
-			expect(function(){msgDeviceTimeResponse.setTime("test")}).to.throw(Error, 'Time is not an integer!');
+			expect(function(){msgDeviceTimeResponse.setTime("test")}).to.throw(Error, 'Time not an integer!');
 		});
 		  
 		it("should throw not an positive integer error for time < 0", function(){	    	   

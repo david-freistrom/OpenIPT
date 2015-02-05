@@ -33,19 +33,19 @@ describe("MsgConnectionCloseResponse", function() {
 		});
 		  
 		it("should throw out of range error for response > 8 bit integer", function(){	    	   
-			expect(function(){msgConnectionCloseResponse.setResponse(45454354)}).to.throw(Error, 'Response is out of range!');
+			expect(function(){msgConnectionCloseResponse.setResponse(45454354)}).to.throw(Error, 'Unknown Response value!');
 		});
 		  
 		it("should throw not an integer error for response as a string", function(){	    	   
-			expect(function(){msgConnectionCloseResponse.setResponse("test")}).to.throw(Error, 'Response is not an integer!');
+			expect(function(){msgConnectionCloseResponse.setResponse("test")}).to.throw(Error, "Response value not an integer!");
 		});
 		  
 		it("should throw not an positive integer error for response < 0", function(){	    	   
-			expect(function(){msgConnectionCloseResponse.setResponse(-1)}).to.throw(Error, 'Response must be >= 0 !');
+			expect(function(){msgConnectionCloseResponse.setResponse(-1)}).to.throw(Error, 'Unknown Response value!');
 		});
 		
 		it("should throw value not defined error for 0x01 > response > 0x03", function(){	    	   
-			expect(function(){msgConnectionCloseResponse.setResponse(0)}).to.throw(Error, 'Response value not defined! Allowed values are 0x01, 0x02, 0x03. See documentation for details.');
+			expect(function(){msgConnectionCloseResponse.setResponse(0)}).to.throw(Error, 'Unknown Response value!');
 		});
 	});
 
