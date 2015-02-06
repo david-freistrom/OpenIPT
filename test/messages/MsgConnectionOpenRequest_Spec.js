@@ -8,22 +8,19 @@ var should = require('chai').should;
 describe("MsgConnectionOpenRequest", function() {
 
 	var MsgConnectionOpenRequest = require("../../lib/messages/MsgConnectionOpenRequest");
-	var msgConnectionOpenRequest = new MsgConnectionOpenRequest();	
+	var msgConnectionOpenRequest;
 		
 	before(function() {
-		    // runs before all tests in this block
 	})
 		  
 	after(function(){
-		    // runs after all tests in this block
 	})
 		  
 	beforeEach(function(){
-		    // runs before each test in this block
+		msgConnectionOpenRequest = new MsgConnectionOpenRequest();
 	})
 		  
 	afterEach(function(){
-		    // runs after each test in this block
 	})
 	  
 	describe("getTargetAddress() / setTargetAddress()", function(){
@@ -48,6 +45,18 @@ describe("MsgConnectionOpenRequest", function() {
 		  
 		it("should raise a invalid format exception for an integer", function(){	    	   
 			expect(function(){msgConnectionOpenRequest.setTargetAddress(123)}).to.throw(Error, "Invalid Target-Address format!");
+		});
+		
+		it("should raise a invalid format exception for 127.0.0.1:453454543", function(){	    	   
+			expect(function(){msgConnectionOpenRequest.setTargetAddress("127.0.0.1:453454543")}).to.throw(Error, "Invalid Target-Address format!");
+		});
+		
+		it("should raise a invalid format exception for 127.0.0.1:wrong", function(){	    	   
+			expect(function(){msgConnectionOpenRequest.setTargetAddress("127.0.0.1:wrong")}).to.throw(Error, "Invalid Target-Address format!");
+		});
+		
+		it("should raise a invalid format exception for 300.0.0.1:12345", function(){	    	   
+			expect(function(){msgConnectionOpenRequest.setTargetAddress("300.0.0.1:12345")}).to.throw(Error, "Invalid Target-Address format!");
 		});
 	});
 	
@@ -74,12 +83,36 @@ describe("MsgConnectionOpenRequest", function() {
 		it("should raise a invalid format exception for an integer", function(){	    	   
 			expect(function(){msgConnectionOpenRequest.setSourceAddress(123)}).to.throw(Error, "Invalid Source-Address format!");
 		});
+		
+		it("should raise a invalid format exception for 127.0.0.1:453454543", function(){	    	   
+			expect(function(){msgConnectionOpenRequest.setSourceAddress("127.0.0.1:453454543")}).to.throw(Error, "Invalid Source-Address format!");
+		});
+		
+		it("should raise a invalid format exception for 127.0.0.1:wrong", function(){	    	   
+			expect(function(){msgConnectionOpenRequest.setSourceAddress("127.0.0.1:wrong")}).to.throw(Error, "Invalid Source-Address format!");
+		});
+		
+		it("should raise a invalid format exception for 300.0.0.1:12345", function(){	    	   
+			expect(function(){msgConnectionOpenRequest.setSourceAddress("300.0.0.1:12345")}).to.throw(Error, "Invalid Source-Address format!");
+		});
 	});
 
 	  
 	describe("getSize()", function() {
-		xit("should return 1", function(){	    	   
-			expect(msgConnectionOpenRequest.getSize()).to.equal(1);
+		it("should return 20 for target and source address", function(){
+			msgConnectionOpenRequest.setSourceAddress("127.0.0.1");
+			msgConnectionOpenRequest.setTargetAddress("127.0.0.1");
+			expect(msgConnectionOpenRequest.getSize()).to.equal(20);
+		}); 
+		
+		it("should return 11 for just a source address", function(){
+			msgConnectionOpenRequest.setSourceAddress("127.0.0.1");
+			expect(msgConnectionOpenRequest.getSize()).to.equal(11);
+		}); 
+		
+		it("should return 10 for just a target address", function(){	
+			msgConnectionOpenRequest.setTargetAddress("127.0.0.1");
+			expect(msgConnectionOpenRequest.getSize()).to.equal(10);
 		}); 
 	});
 	  
