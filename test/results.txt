@@ -1,5 +1,16 @@
 
 [0m[0m
+[0m  IptBuffer[0m
+[0m    IptBuffer(buffer)[0m
+[2K[0G    [32m  ✓[0m[90m should set this.buffer to a given Buffer [0m
+[2K[0G    [32m  ✓[0m[90m should set this.buffer to a given Buffer cleaned by started escape sequence [0m
+[2K[0G    [32m  ✓[0m[90m should set this.offset to 0 [0m
+[0m    getLength()[0m
+[2K[0G    [32m  ✓[0m[90m should set length to given buffer size [0m
+[2K[0G    [32m  ✓[0m[90m should set length to MAX_BUFFER_SIZE [0m
+[0m    readUInt8String()[0m
+[2K[0G    [32m  ✓[0m[90m should return given string from buffer [0m
+
 [0m  MsgDeviceTimeResponse[0m
 [0m    getTime() / setTime()[0m
 [2K[0G    [32m  ✓[0m[90m should set and get instance variable time for a valid time value [0m
@@ -49,21 +60,22 @@ Response: 1
 [2K[0G    [32m  ✓[0m[90m should raise a invalid format exception for 127.0.0.1:wrong [0m
 [2K[0G    [32m  ✓[0m[90m should raise a invalid format exception for 300.0.0.1:12345 [0m
 [0m    getSize()[0m
-127.0.0.1
-127.0.0.1
 [2K[0G    [32m  ✓[0m[90m should return 20 for target and source address [0m
-127.0.0.1
-undefined
 [2K[0G    [32m  ✓[0m[90m should return 11 for just a source address [0m
-undefined
-127.0.0.1
 [2K[0G    [32m  ✓[0m[90m should return 10 for just a target address [0m
 [0m    write()[0m
-    [36m  - should write UInt8 value 0x01 to buffer[0m
+[2K[0G    [32m  ✓[0m[90m should write combined Address to buffer [0m
+[2K[0G    [32m  ✓[0m[90m should write combined Address with ports to buffer [0m
+[2K[0G    [32m  ✓[0m[90m should write combined Address with subaddresses to buffer [0m
+[2K[0G    [32m  ✓[0m[90m should write just source address to buffer [0m
+[2K[0G    [32m  ✓[0m[90m should write just target address to buffer [0m
+[2K[0G    [32m  ✓[0m[90m should raise combined address too long exception for > 62 byte strings [0m
 [0m    parse()[0m
-    [36m  - should return a MsgConnectionOpenRequest[0m
+[2K[0G    [32m  ✓[0m[90m should return a MsgConnectionOpenRequest for Target-IP and Source-IP [0m
+[2K[0G    [32m  ✓[0m[90m should return a MsgConnectionOpenRequest for Target-IP:PORT and Source-IP:PORT [0m
+[2K[0G    [32m  ✓[0m[90m should return a MsgConnectionOpenRequest just for Target-IP:PORT [0m
+[2K[0G    [32m  ✓[0m[90m should return a MsgConnectionOpenRequest just for Source-IP:PORT [0m
 
 
-[92m [0m[32m 34 passing[0m[90m (29ms)[0m
-[36m [0m[36m 2 pending[0m
+[92m [0m[32m 50 passing[0m[90m (32ms)[0m
 

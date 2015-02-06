@@ -8,7 +8,7 @@ var should = require('chai').should;
 describe("MsgConnectionCloseResponse", function() {
 
 	var MsgConnectionCloseResponse = require("../../lib/messages/MsgConnectionCloseResponse");
-	var msgConnectionCloseResponse = new MsgConnectionCloseResponse();	
+	var msgConnectionCloseResponse;	
 		
 	before(function() {
 		    // runs before all tests in this block
@@ -19,7 +19,7 @@ describe("MsgConnectionCloseResponse", function() {
 	})
 		  
 	beforeEach(function(){
-		    // runs before each test in this block
+		msgConnectionCloseResponse = new MsgConnectionCloseResponse();
 	})
 		  
 	afterEach(function(){

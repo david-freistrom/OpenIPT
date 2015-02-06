@@ -117,34 +117,99 @@ describe("MsgConnectionOpenRequest", function() {
 	});
 	  
 	describe("write()", function() {
-		  
+		
 		var IptBuffer = require('../../lib/IptBuffer');
-
-		xit("should write UInt8 value 0x01 to buffer", function(){	    	   
-			var iptBuffer = new IptBuffer(new Buffer(1));
-			msgConnectionOpenRequest.setResponse(1);
-			
+		
+		it("should write combined Address to buffer", function(){	    	   
+			msgConnectionOpenRequest.setSourceAddress("127.0.0.1");
+			msgConnectionOpenRequest.setTargetAddress("192.168.0.1");
+			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
+			var buffer = new Buffer('192.168.0.1'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1'+String.fromCharCode(parseInt('00', 16)));
 			msgConnectionOpenRequest.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 1)).to.equal("01");
-		  
-			// expect(function() {
-			// msgDeviceTimeResponse.write(iptBuffer);
-			// }).to.change(iptBuffer.buffer.toString('hex', 0, 4),{to:
-			// "01000000"});
+			expect(iptBuffer.buffer.toString('hex', 0, 22)).to.equal(buffer.toString('hex', 0, 22));
 		}); 
+		
+		it("should write combined Address with ports to buffer", function(){	    	   
+			msgConnectionOpenRequest.setSourceAddress("127.0.0.1:1234");
+			msgConnectionOpenRequest.setTargetAddress("192.168.0.1:1234");
+			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
+			var buffer = new Buffer('192.168.0.1:1234'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:1234'+String.fromCharCode(parseInt('00', 16)));
+			msgConnectionOpenRequest.write(iptBuffer);
+			expect(iptBuffer.buffer.toString('hex', 0, 27)).to.equal(buffer.toString('hex', 0, 27));
+		}); 
+		
+		it("should write combined Address with subaddresses to buffer", function(){	    	   
+			msgConnectionOpenRequest.setSourceAddress("127.0.0.1:1234!127.0.1.2:1234");
+			msgConnectionOpenRequest.setTargetAddress("192.168.0.1:1234!192.168.1.1:1234");
+			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
+			var buffer = new Buffer('192.168.0.1:1234!192.168.1.1:1234'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:1234!127.0.1.2:1234'+String.fromCharCode(parseInt('00', 16)));
+			msgConnectionOpenRequest.write(iptBuffer);
+			expect(iptBuffer.buffer.toString('hex', 0, 59)).to.equal(buffer.toString('hex', 0, 59));
+		}); 
+		
+		it("should write just source address to buffer", function(){	    	   
+			msgConnectionOpenRequest.setSourceAddress("127.0.0.1");
+			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
+			var buffer = new Buffer(String.fromCharCode(parseInt('7f', 16))+'127.0.0.1'+String.fromCharCode(parseInt('00', 16)));
+			msgConnectionOpenRequest.write(iptBuffer);
+			expect(iptBuffer.buffer.toString('hex', 0, 11)).to.equal(buffer.toString('hex', 0, 11));
+		}); 
+		
+		it("should write just target address to buffer", function(){	    	   
+			msgConnectionOpenRequest.setTargetAddress("192.168.0.1");
+			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
+			var buffer = new Buffer('192.168.0.1'+String.fromCharCode(parseInt('00', 16)));
+			msgConnectionOpenRequest.write(iptBuffer);
+			expect(iptBuffer.buffer.toString('hex', 0, 10)).to.equal(buffer.toString('hex', 0, 10));
+		});
+		
+		it("should raise combined address too long exception for > 62 byte strings", function(){	    	   
+			msgConnectionOpenRequest.setTargetAddress("255.255.255.255:12345!255.255.22.1");
+			msgConnectionOpenRequest.setSourceAddress("255.255.255.255!255.255.22.12");
+			
+			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
+				
+			expect(function(){msgConnectionOpenRequest.write(iptBuffer);}).to.throw(Error, "Combined Address too long!");
+		});
+		
 	});
 	  
 	describe("parse()", function() {
 
 		var IptBuffer = require('../../lib/IptBuffer');
 		  
-		xit("should return a MsgConnectionOpenRequest", function(){	    	   
-			var iptBuffer = new IptBuffer(new Buffer(1));
-			iptBuffer.writeUInt8(1);
+		it("should return a MsgConnectionOpenRequest for Target-IP and Source-IP", function(){	    	   
+			var iptBuffer = new IptBuffer(new Buffer('192.168.0.1'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1'+String.fromCharCode(parseInt('00', 16))));
 			iptBuffer.offset=0;
 			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
 			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
-			expect(msgConnectionOpenRequest.getResponse()).to.equal(1);
+			expect(msgConnectionOpenRequest.getSourceAddress()).to.equal("127.0.0.1");
+			expect(msgConnectionOpenRequest.getTargetAddress()).to.equal("192.168.0.1");
 		});  
+		
+		it("should return a MsgConnectionOpenRequest for Target-IP:PORT and Source-IP:PORT", function(){	    	   
+			var iptBuffer = new IptBuffer(new Buffer('192.168.0.1:12345'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:12345'+String.fromCharCode(parseInt('00', 16))));
+			iptBuffer.offset=0;
+			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
+			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
+			expect(msgConnectionOpenRequest.getSourceAddress()).to.equal("127.0.0.1:12345");
+			expect(msgConnectionOpenRequest.getTargetAddress()).to.equal("192.168.0.1:12345");
+		});  
+		
+		it("should return a MsgConnectionOpenRequest just for Target-IP:PORT", function(){	    	   
+			var iptBuffer = new IptBuffer(new Buffer('192.168.0.1:12345'+String.fromCharCode(parseInt('00', 16))));
+			iptBuffer.offset=0;
+			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
+			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
+			expect(msgConnectionOpenRequest.getTargetAddress()).to.equal("192.168.0.1:12345");
+		});  
+		
+		it("should return a MsgConnectionOpenRequest just for Source-IP:PORT", function(){	    	   
+			var iptBuffer = new IptBuffer(new Buffer(String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:12345'+String.fromCharCode(parseInt('00', 16))));
+			iptBuffer.offset=0;
+			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
+			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
+			expect(msgConnectionOpenRequest.getSourceAddress()).to.equal("127.0.0.1:12345");
+		}); 
 	});  
 });
