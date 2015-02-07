@@ -10,6 +10,34 @@
 [2K[0G    [32m  ✓[0m[90m should set length to MAX_BUFFER_SIZE [0m
 [0m    readUInt8String()[0m
 [2K[0G    [32m  ✓[0m[90m should return given string from buffer [0m
+[0m    writeUInt8String()[0m
+[2K[0G    [32m  ✓[0m[90m should write a given string to iptBuffer [0m
+[0m    readUInt8VarArray()[0m
+[2K[0G    [32m  ✓[0m[90m should return a 15 byte UInt8 Array from buffer [0m
+[0m    writeUInt8VarArray()[0m
+[2K[0G    [32m  ✓[0m[90m should write a given 15 byte UInt8 Array to iptBuffer [0m
+[0m    readUInt8Array()[0m
+[2K[0G    [32m  ✓[0m[90m should return a 32 byte UInt8 Array from buffer [0m
+[0m    writeUInt8Array()[0m
+[2K[0G    [32m  ✓[0m[90m should write a given 32 byte UInt8 Array to iptBuffer [0m
+[0m    readUInt8()[0m
+[2K[0G    [32m  ✓[0m[90m should return a UInt8 value from iptBuffer [0m
+[0m    writeUInt8()[0m
+[2K[0G    [32m  ✓[0m[90m should write a UInt8 value to iptBuffer [0m
+[0m    readUInt16()[0m
+[2K[0G    [32m  ✓[0m[90m should return a LE UInt16 value from iptBuffer [0m
+[0m    writeUInt16()[0m
+[2K[0G    [32m  ✓[0m[90m should write a LE UInt16 value to iptBuffer [0m
+[0m    readUInt32()[0m
+[2K[0G    [32m  ✓[0m[90m should return a LE UInt32 value from iptBuffer [0m
+[0m    writeUInt16()[0m
+[2K[0G    [32m  ✓[0m[90m should write a LE UInt32 value to iptBuffer [0m
+[0m    readUInt64()[0m
+    [36m  - should return a UInt64 value from iptBuffer[0m
+[0m    writeUInt64()[0m
+    [36m  - should write a UInt64 value to iptBuffer[0m
+[0m    getScrambledBuffer()[0m
+[2K[0G    [32m  ✓[0m[90m should return the scrambled iptBuffer [0m
 
 [0m  MsgDeviceTimeResponse[0m
 [0m    getTime() / setTime()[0m
@@ -77,5 +105,6 @@ Response: 1
 [2K[0G    [32m  ✓[0m[90m should return a MsgConnectionOpenRequest just for Source-IP:PORT [0m
 
 
-[92m [0m[32m 50 passing[0m[90m (32ms)[0m
+[92m [0m[32m 62 passing[0m[90m (35ms)[0m
+[36m [0m[36m 2 pending[0m
 

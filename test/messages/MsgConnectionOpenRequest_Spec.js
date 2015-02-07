@@ -126,7 +126,7 @@ describe("MsgConnectionOpenRequest", function() {
 			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
 			var buffer = new Buffer('192.168.0.1'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1'+String.fromCharCode(parseInt('00', 16)));
 			msgConnectionOpenRequest.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 22)).to.equal(buffer.toString('hex', 0, 22));
+			expect(iptBuffer.getBuffer().toString('hex', 0, 22)).to.equal(buffer.toString('hex', 0, 22));
 		}); 
 		
 		it("should write combined Address with ports to buffer", function(){	    	   
@@ -135,7 +135,7 @@ describe("MsgConnectionOpenRequest", function() {
 			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
 			var buffer = new Buffer('192.168.0.1:1234'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:1234'+String.fromCharCode(parseInt('00', 16)));
 			msgConnectionOpenRequest.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 27)).to.equal(buffer.toString('hex', 0, 27));
+			expect(iptBuffer.getBuffer().toString('hex', 0, 27)).to.equal(buffer.toString('hex', 0, 27));
 		}); 
 		
 		it("should write combined Address with subaddresses to buffer", function(){	    	   
@@ -144,7 +144,7 @@ describe("MsgConnectionOpenRequest", function() {
 			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
 			var buffer = new Buffer('192.168.0.1:1234!192.168.1.1:1234'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:1234!127.0.1.2:1234'+String.fromCharCode(parseInt('00', 16)));
 			msgConnectionOpenRequest.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 59)).to.equal(buffer.toString('hex', 0, 59));
+			expect(iptBuffer.getBuffer().toString('hex', 0, 59)).to.equal(buffer.toString('hex', 0, 59));
 		}); 
 		
 		it("should write just source address to buffer", function(){	    	   
@@ -152,7 +152,7 @@ describe("MsgConnectionOpenRequest", function() {
 			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
 			var buffer = new Buffer(String.fromCharCode(parseInt('7f', 16))+'127.0.0.1'+String.fromCharCode(parseInt('00', 16)));
 			msgConnectionOpenRequest.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 11)).to.equal(buffer.toString('hex', 0, 11));
+			expect(iptBuffer.getBuffer().toString('hex', 0, 11)).to.equal(buffer.toString('hex', 0, 11));
 		}); 
 		
 		it("should write just target address to buffer", function(){	    	   
@@ -160,7 +160,7 @@ describe("MsgConnectionOpenRequest", function() {
 			var iptBuffer = new IptBuffer(new Buffer(msgConnectionOpenRequest.getSize()));		
 			var buffer = new Buffer('192.168.0.1'+String.fromCharCode(parseInt('00', 16)));
 			msgConnectionOpenRequest.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 10)).to.equal(buffer.toString('hex', 0, 10));
+			expect(iptBuffer.getBuffer().toString('hex', 0, 10)).to.equal(buffer.toString('hex', 0, 10));
 		});
 		
 		it("should raise combined address too long exception for > 62 byte strings", function(){	    	   
@@ -180,7 +180,7 @@ describe("MsgConnectionOpenRequest", function() {
 		  
 		it("should return a MsgConnectionOpenRequest for Target-IP and Source-IP", function(){	    	   
 			var iptBuffer = new IptBuffer(new Buffer('192.168.0.1'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1'+String.fromCharCode(parseInt('00', 16))));
-			iptBuffer.offset=0;
+			iptBuffer.setOffset(0);
 			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
 			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
 			expect(msgConnectionOpenRequest.getSourceAddress()).to.equal("127.0.0.1");
@@ -189,7 +189,7 @@ describe("MsgConnectionOpenRequest", function() {
 		
 		it("should return a MsgConnectionOpenRequest for Target-IP:PORT and Source-IP:PORT", function(){	    	   
 			var iptBuffer = new IptBuffer(new Buffer('192.168.0.1:12345'+String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:12345'+String.fromCharCode(parseInt('00', 16))));
-			iptBuffer.offset=0;
+			iptBuffer.setOffset(0);
 			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
 			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
 			expect(msgConnectionOpenRequest.getSourceAddress()).to.equal("127.0.0.1:12345");
@@ -198,7 +198,7 @@ describe("MsgConnectionOpenRequest", function() {
 		
 		it("should return a MsgConnectionOpenRequest just for Target-IP:PORT", function(){	    	   
 			var iptBuffer = new IptBuffer(new Buffer('192.168.0.1:12345'+String.fromCharCode(parseInt('00', 16))));
-			iptBuffer.offset=0;
+			iptBuffer.setOffset(0);
 			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
 			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
 			expect(msgConnectionOpenRequest.getTargetAddress()).to.equal("192.168.0.1:12345");
@@ -206,7 +206,7 @@ describe("MsgConnectionOpenRequest", function() {
 		
 		it("should return a MsgConnectionOpenRequest just for Source-IP:PORT", function(){	    	   
 			var iptBuffer = new IptBuffer(new Buffer(String.fromCharCode(parseInt('7f', 16))+'127.0.0.1:12345'+String.fromCharCode(parseInt('00', 16))));
-			iptBuffer.offset=0;
+			iptBuffer.setOffset(0);
 			var msgConnectionOpenRequest = MsgConnectionOpenRequest.parse(iptBuffer);
 			expect(msgConnectionOpenRequest).to.be.an.instanceof(MsgConnectionOpenRequest);
 			expect(msgConnectionOpenRequest.getSourceAddress()).to.equal("127.0.0.1:12345");

@@ -61,7 +61,7 @@ describe("MsgDeviceTimeResponse", function() {
 			msgDeviceTimeResponse.setTime(1);
 			
 			msgDeviceTimeResponse.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 4)).to.equal("01000000");
+			expect(iptBuffer.getBuffer().toString('hex', 0, 4)).to.equal("01000000");
 		  
 			// expect(function() {
 			// msgDeviceTimeResponse.write(iptBuffer);
@@ -77,7 +77,7 @@ describe("MsgDeviceTimeResponse", function() {
 		it("should return a MsgDeviceTimeResponse", function(){	    	   
 			var iptBuffer = new IptBuffer(new Buffer(4));
 			iptBuffer.writeUInt32(1);
-			iptBuffer.offset=0;
+			iptBuffer.setOffset(0);
 			var msgDeviceTimeResponse = MsgDeviceTimeResponse.parse(iptBuffer);
 			expect(msgDeviceTimeResponse).to.be.an.instanceof(MsgDeviceTimeResponse);
 			expect(msgDeviceTimeResponse.getTime()).to.equal(1);

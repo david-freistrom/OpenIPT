@@ -65,11 +65,11 @@ describe("MsgConnectionCloseResponse", function() {
 			msgConnectionCloseResponse.setResponse(1);
 			
 			msgConnectionCloseResponse.write(iptBuffer);
-			expect(iptBuffer.buffer.toString('hex', 0, 1)).to.equal("01");
+			expect(iptBuffer.getBuffer().toString('hex', 0, 1)).to.equal("01");
 		  
 			// expect(function() {
 			// msgDeviceTimeResponse.write(iptBuffer);
-			// }).to.change(iptBuffer.buffer.toString('hex', 0, 4),{to:
+			// }).to.change(iptBuffer.getBuffer().toString('hex', 0, 4),{to:
 			// "01000000"});
 		}); 
 	});
@@ -81,7 +81,7 @@ describe("MsgConnectionCloseResponse", function() {
 		it("should return a MsgConnectionCloseResponse", function(){	    	   
 			var iptBuffer = new IptBuffer(new Buffer(1));
 			iptBuffer.writeUInt8(1);
-			iptBuffer.offset=0;
+			iptBuffer.setOffset(0);
 			var msgConnectionCloseResponse = MsgConnectionCloseResponse.parse(iptBuffer);
 			expect(msgConnectionCloseResponse).to.be.an.instanceof(MsgConnectionCloseResponse);
 			expect(msgConnectionCloseResponse.getResponse()).to.equal(1);
