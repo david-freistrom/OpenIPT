@@ -1,6 +1,6 @@
 {
   "name": "open-ipt",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "IP-T (Draft E-DIN 43863-4) Implementation",
   "main": "index.js",
   "scripts": {
