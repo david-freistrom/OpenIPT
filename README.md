@@ -2,7 +2,11 @@
 
 Meter Data Communication IP-Telemetry (Draft E-DIN 43863-4) Implementation with Node.js
 
-!!! Using by your own risk !!!
+!!! 
+ This is a very unstable and not complete tested version. 
+ Wrong inputs could hang-up or damage your system
+ Use it by your own risk 
+!!!
 
 ## Install
 
@@ -33,6 +37,7 @@ OpenIPT$ grunt test
 * Usage examples
 * Integration tests with Mocha
 * Refactoring Validations
+* Extrend validations for Numbers values
 
 ## License
 

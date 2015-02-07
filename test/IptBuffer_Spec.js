@@ -11,7 +11,7 @@ describe("IptBuffer", function() {
 		   
 	describe("IptBuffer(buffer)", function(){
 				  
-		it("should set this.buffer to a given Buffer", function(){	   
+		xit("should set this.buffer to a given Buffer", function(){	   
 			var buffer = new Buffer("ffff", 'hex');
 			var iptBuffer = new IptBuffer(buffer);
 		    expect(iptBuffer.getBuffer()).to.be.instanceof(Buffer);

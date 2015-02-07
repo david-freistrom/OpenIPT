@@ -2,7 +2,7 @@
 [0m[0m
 [0m  IptBuffer[0m
 [0m    IptBuffer(buffer)[0m
-[2K[0G    [32m  ✓[0m[90m should set this.buffer to a given Buffer [0m
+    [36m  - should set this.buffer to a given Buffer[0m
 [2K[0G    [32m  ✓[0m[90m should set this.buffer to a given Buffer cleaned by started escape sequence [0m
 [2K[0G    [32m  ✓[0m[90m should set this.offset to 0 [0m
 [0m    getLength()[0m
@@ -38,6 +38,11 @@
     [36m  - should write a UInt64 value to iptBuffer[0m
 [0m    getScrambledBuffer()[0m
 [2K[0G    [32m  ✓[0m[90m should return the scrambled iptBuffer [0m
+
+[0m  IptHeader[0m
+[0m    IptHeader(commandTag)[0m
+2
+[2K[0G    [32m  ✓[0m[90m should set commandTag to given 2 byte value [0m
 
 [0m  MsgDeviceTimeResponse[0m
 [0m    getTime() / setTime()[0m
@@ -105,6 +110,6 @@ Response: 1
 [2K[0G    [32m  ✓[0m[90m should return a MsgConnectionOpenRequest just for Source-IP:PORT [0m
 
 
-[92m [0m[32m 62 passing[0m[90m (35ms)[0m
-[36m [0m[36m 2 pending[0m
+[92m [0m[32m 62 passing[0m[90m (34ms)[0m
+[36m [0m[36m 3 pending[0m
 

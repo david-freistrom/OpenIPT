@@ -82,3 +82,9 @@ var MsgStreamSourceRegisterResponse = require('./lib/messages/MsgStreamSourceReg
 
 var MsgUnknownCommandResponse = require('./lib/messages/MsgUnknownCommandResponse');
 
+module.exports = {
+		IptCommand: IptCommand,
+		IptHeader: IptHeader,
+		IptBuffer: IptBuffer,
+		IptMessage: IptMessage
+};
