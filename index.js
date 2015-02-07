@@ -3,6 +3,7 @@ var IptCommand = require('./lib/IptCommand');
 var IptHeader = require('./lib/IptHeader');
 var IptBuffer = require('./lib/IptBuffer');
 var IptMessage = require('./lib/IptMessage');
+var IptHelper = require('./lib/IptHelper');
 
 var PushTargetNameReq = require('./lib/messages/helper/PushTargetNameReq');
 var PushTargetNameListFilter = require('./lib/messages/helper/PushTargetNameListFilter');
@@ -86,5 +87,7 @@ module.exports = {
 		IptCommand: IptCommand,
 		IptHeader: IptHeader,
 		IptBuffer: IptBuffer,
-		IptMessage: IptMessage
+		IptMessage: IptMessage,
+		Constants: Constants,
+		IptHelper: IptHelper
 };

@@ -11,7 +11,7 @@ Meter Data Communication IP-Telemetry (Draft E-DIN 43863-4) Implementation with 
 ## Install
 
 ```
-$ npm install openipt --save
+$ npm install open-ipt --save
 ```
 
 ## Usage
