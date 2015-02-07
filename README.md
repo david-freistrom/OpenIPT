@@ -28,11 +28,15 @@ OpenIPT$ grunt test
 ### ToDo's
 
 * Handling of UInt64
-* Write Tests with Mocha
+* Write more unit tests with Mocha
+* JsDoc
+* Usage examples
+* Integration tests with Mocha
+* Refactoring Validations
 
 ## License
 
-Copyright (c) 2014 [David Spautz]
+Copyright (c) 2015 [David Spautz @ Freistrom]
 
 MIT License
 
@@ -58,5 +62,5 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Authors & contributors
 
-* David Spautz <d.spautz@mail.com>
+* David Spautz <spautz@freistrom-handel.de>
 
