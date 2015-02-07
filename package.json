@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/dspautz/OpenIPT",
   "dependencies": {
-    "validator": "^3.28.0",
+    "validator": "^3.28.0"
   },
   "devDependencies": {
     "chai": "^1.10.0",
