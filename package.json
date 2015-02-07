@@ -21,6 +21,10 @@
     "url": "https://github.com/dspautz/OpenIPT/issues"
   },
   "homepage": "https://github.com/dspautz/OpenIPT",
+  "dependencies": {
+    "validator": "^3.28.0",
+    "open-ipt": "^0.1.2"
+  },
   "devDependencies": {
     "chai": "^1.10.0",
     "chai-change": "^1.0.0",
@@ -29,7 +33,6 @@
     "grunt-contrib-nodeunit": "~0.4.1",
     "grunt-contrib-uglify": "~0.5.0",
     "grunt-mocha-test": "^0.12.6",
-    "mocha": "^2.0.1",
-    "validator": "^3.28.0"
+    "mocha": "^2.0.1"
   }
 }
