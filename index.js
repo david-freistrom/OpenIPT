@@ -89,5 +89,6 @@ module.exports = {
 		IptBuffer: IptBuffer,
 		IptMessage: IptMessage,
 		Constants: Constants,
-		IptHelper: IptHelper
+		IptHelper: IptHelper,
+		PushTargetNameReq: PushTargetNameReq
 };
