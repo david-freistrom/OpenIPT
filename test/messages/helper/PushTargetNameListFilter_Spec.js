@@ -7,7 +7,7 @@ var should = require('chai').should;
 // Specs for PushTargetNameListFilter
 describe("PushTargetNameListFilter", function() {
 
-	var PushTargetNameListFilter = require("../../lib/messages/PushTargetNameListFilter");
+	var PushTargetNameListFilter = require("../../lib/messages/helper/PushTargetNameListFilter");
 	var pushTargetNameListFilter;	
 		
 	before(function() {
