@@ -1,6 +1,7 @@
-.jshintrc
-.tern-project
-.project
 .settings
 node_modules
 build
+.project
+.tern-project
+.jshintrc
+test/results.txt
